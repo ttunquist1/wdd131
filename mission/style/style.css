@@ -3,8 +3,23 @@ body{
     
 }
 
+.dark{
+    background-color: #333;
+}
+
+.dark h1{
+    color: #fff;
+}   
+
+.dark p{
+    color: #fff;
+}
+
+.dark li{
+    color: #fff;
+}
+
 #border{
-    background-color:white;
     border: 1px solid rgb(167, 167, 167);
     margin: 50px;
     text-align: center;
