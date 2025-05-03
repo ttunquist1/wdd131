@@ -7,6 +7,7 @@ let logoElm = document.querySelector("img");
 selectElm.addEventListener("change", changeTheme);
 
 function changeTheme() {
+    console.log("Theme changed to: " + selectElm.value);
     let current = selectElm.value;
     if (current == 2)
     {
@@ -15,7 +16,7 @@ function changeTheme() {
 
         logoElm.src = "byui-logo_dark.png";
 
-        
+
     } else {
         document.body.classList.remove("dark");
         logoElm.src = "byui-logo_blue.webp";
