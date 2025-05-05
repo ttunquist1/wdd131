@@ -1,0 +1,49 @@
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+header,
+main,
+footer {
+    max-width: 1000px;
+    margin: 1rem auto;
+    border: 1px solid #b4aeae;
+    padding: 1rem;
+    background-color: #cce0f7;
+}
+
+main {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 1rem;
+}
+
+section {
+    padding: 1rem;
+    background-color: #fff;
+}
+
+@media screen and (min-width: 500px) {
+    header{
+        background-color: black;
+        color: white;
+    }
+
+    main {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+}
+
+@media screen and (min-width: 700px) {
+    main {
+        grid-template-columns: repeat(3, 1fr);
+    } 
+}
+
+@media screen and (min-width: 900px) {
+    main {
+        grid-template-columns: repeat(4, 1fr);
+    } 
+    
+}
