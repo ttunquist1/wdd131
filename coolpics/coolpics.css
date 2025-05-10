@@ -1,22 +1,148 @@
-@import url("https://fonts.googleapis.com/css2?family=family=Mooli&display=swap");
- :root {
- --primary-color: #52489c;
- --secondary-color: #59c3c3;
- --accent-color: #f45b69;
- --text-dark: #333;
- --text-light: #ebebeb;
- --primary-font: Arial, Helvetica,sans-serif;
- --secondary-font: Mooli, san-serif;
- }
+@import url("https://fonts.googleapis.com/css2?family=Mooli&display=swap");
+
+:root {
+  --primary-color: #52489c;
+  --secondary-color: #59c3c3;
+  --accent-color: #f45b69;
+  --text-dark: #333;
+  --text-light: #ebebeb;
+  --primary-font: Arial, Helvetica, sans-serif;
+  --secondary-font: "Mooli", sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--primary-font);
+  font-size: 1.2em;
+}
 
 header {
-    background-color: var(--primary-color);
-    color: var(--text-light);
-    font-family: var(--primary-font);
-    padding: 20px;
-    text-align: center;
+  background-color: var(--primary-color);
+  color: var(--text-light);
+  font-family: var(--primary-font);
+  text-align: center;
+  width: 100%;
+  padding: 1rem 0;
 }
 
-.medium {
-    display:none;
+li {
+  list-style-type: none;
 }
+
+li a {
+  color: var(--text-light);
+  text-decoration: none;
+}
+
+.medium,
+.large {
+  display: none;
+}
+
+main {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  text-align: center;
+  padding: 1rem;
+}
+
+.image-container1 img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+}
+
+.regular {
+  width: 100%;
+}
+
+footer {
+  background-color: var(--primary-color);
+  color: var(--text-light);
+  text-align: center;
+  padding: 1rem 0;
+}
+
+h1{
+    grid-column: 1 ;
+}
+
+/* Responsive Grid Columns */
+@media screen and (min-width: 500px) {
+    main {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    nav{
+        display: none;
+    }
+
+    .medium{
+        display: block;
+        background-color: var(--primary-color);
+        border: none;
+
+        font-size: large;
+        color: var(--text-light);
+    }
+
+    header{
+        justify-items: center;
+    }
+
+    h1{
+        grid-column: 1/3;
+    }
+  
+
+}
+
+@media screen and (min-width: 900px) {
+  main {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+    .regular{
+        display: none;
+    }
+
+    .large{
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+
+    .medium{
+        display: none;
+    }
+
+    nav{
+        display: block;
+        
+    }
+
+    li{
+        display: inline;
+        margin: 25px;
+    }
+
+    .small{
+        display: none;
+    }
+
+    h1{
+        grid-column: 1/4;
+    }
+
+}
+
+  
+
+

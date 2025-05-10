@@ -10,6 +10,7 @@ footer {
     border: 1px solid #b4aeae;
     padding: 1rem;
     background-color: #cce0f7;
+    
 }
 
 main {
@@ -45,5 +46,8 @@ section {
     main {
         grid-template-columns: repeat(4, 1fr);
     } 
+
+    
+    
     
 }
