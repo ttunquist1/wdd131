@@ -1,0 +1,140 @@
+
+.skiptocontent a {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: #000;
+  color: #fff;
+  padding: 8px 16px;
+  z-index: 100;
+  text-decoration: none;
+}
+
+.skiptocontent a:focus {
+  top: 10px;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background: #f4f4f4;
+}
+
+header {
+  text-align: center;
+  padding: 20px;
+  background: #fff;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  background: #eee;
+  padding: 10px;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  flex-wrap: wrap;
+}
+
+nav a{
+  margin: 10px;
+  text-decoration: none;
+  color: #333;
+}
+
+.container {
+  display: block;
+  padding: 10px;
+}
+
+.sidebar,
+.main-content,
+.filters {
+  width: 100%;
+  padding: 10px 0;
+  text-align: center;
+}
+
+.main-content img {
+  width: 80%;
+  height: auto;
+  background: #ccc;
+  margin: 10px auto;
+  display: block;
+}
+
+.filters label,
+.filters select {
+  display: block;
+  margin: 10px auto;
+  width: 80%;
+  max-width: 300px;
+}
+
+.book-list {
+  width: 100%;
+}
+
+.book-entry {
+  display: block;
+  margin-bottom: 30px;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 20px;
+}
+
+
+@media screen and (min-width: 500px) {
+  .book-entry {
+    display: flex;
+  }
+
+  nav {
+    justify-content: flex-end;
+    padding: 10px 20px;
+  }
+
+  .container {
+    display: flex;
+    padding: 20px;
+  }
+
+  .sidebar {
+    width: 15%;
+    font-size: 14px;
+    text-align: center;
+    padding-right: 20px;
+  }
+
+  .main-content {
+    width: 60%;
+    text-align: left;
+  }
+
+  .main-content h2 {
+    font-size: 18px;
+  }
+
+  .main-content img {
+    width: 200px;
+    height: 300px;
+    margin: 10px 0;
+  }
+
+  .filters {
+    width: 25%;
+    padding-left: 20px;
+    text-align: left;
+  }
+
+  .filters label {
+    display: block;
+    margin: 10px 0 5px;
+  }
+
+  .filters select {
+    width: 100%;
+    padding: 5px;
+  }
+}

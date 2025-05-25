@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="blog">
+    <meta name="author" content="Tom Tunquist">
+    <title>Book Library</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <header>Kids Read for Fun</header>
+    <div class="skiptocontent">
+        <a href="#maincontent">skip to main content</a>
+    </div>
+    <nav>
+        <a href="#">About</a>
+        <a href="#">Archive</a>
+        <a href="#">Search</a>
+    </nav>
+
+    <div class="container" id="maincontent">
+        <div class="book-list">
+
+            <!-- copy and paste for each entry -->
+            <div class="book-entry">
+                <div class="sidebar">
+                    <p>July 5, 2022</p>
+                    <p>10–14</p>
+                    <p>Fantasy</p>
+                    <p>★★★★</p>
+                </div>
+                <div class="main-content">
+                    <h2><strong>Septimus Heap Book One: Magyk</strong></h2>
+                    <img src="#" alt="Book Cover Placeholder">
+                    <p>Lorem ipsum dolor sit amet et delectus accommodare his consul copiosae legendos at vix ad putent
+                        delectus</p>
+                </div>
+            </div>
+            <!-- end copy -->
+
+            <div class="book-entry">
+                <div class="sidebar">
+                    <p>December 12, 2021</p>
+                    <p>12-16</p>
+                    <p>Fantasy</p>
+                    <p>★★★☆</p>
+                </div>
+                <div class="main-content">
+                    <h2><strong>Magnus Chase Book One: Sword of Summer</strong></h2>
+                    <img src="#" alt="Book Cover Placeholder">
+                    <p>Cool book</p>
+                </div>
+            </div>
+
+        </div>
+        <!-- BOOK LIST END -->
+
+        <!-- Filters Section -->
+        <div class="filters">
+            <label for="sort">Sort:</label>
+            <select id="sort">
+                <option>--</option>
+            </select>
+
+            <label for="age">Age:</label>
+            <select id="age">
+                <option>--</option>
+            </select>
+
+            <label for="genre">Genre:</label>
+            <select id="genre">
+                <option>--</option>
+            </select>
+
+            <label for="rating">Rating:</label>
+            <select id="rating">
+                <option>--</option>
+            </select>
+        </div>
+    </div>
+</body>
+
+</html>
