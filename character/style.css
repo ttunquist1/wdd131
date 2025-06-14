@@ -1,0 +1,73 @@
+body {
+  font-family: 'Palatino Linotype', sans-serif;
+  background: #f0f4f8;
+  margin: 0;
+  padding: 0;
+  justify-items: center;
+}
+
+.card {
+  background: #313131;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  width: 320px;
+  margin: 100px auto;
+  overflow: hidden;
+}
+
+.image {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.name {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: white;
+  padding: 15px 15px;
+  background-color: #5d747b;
+}
+
+.stats {
+  padding: 10px 20px;
+  text-align: left;
+  color: #f0f4f8;
+}
+
+.stats p {
+  margin: 6px 0;
+}
+
+.stats strong {
+  font-weight: bold;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-around;
+  padding: 15px 20px;
+  background-color: #313131;
+}
+
+button {
+  padding: 8px 14px;
+  border: none;
+  border-radius: 6px;
+  background-color: #5d747b;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #495a61;
+}
+
+#log {
+  text-align: center;
+  color: #ddd;
+  font-size: 0.9rem;
+  padding: 0 15px 15px;
+}

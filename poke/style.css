@@ -1,0 +1,23 @@
+body{
+    justify-items: center;
+}
+
+.border{
+    background-color: white;
+    border-radius: 10px;
+    border-width: 15px;
+    border-style: solid;
+    border-color: yellow;
+    width: 350px;
+    height: 500px;
+    justify-items: center;
+}
+
+.name_plate{
+    display: inline;
+}
+img{
+    border-color: darkgoldenrod;
+    border-width: 5px;
+    
+}
