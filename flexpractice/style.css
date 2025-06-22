@@ -1,0 +1,48 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-size: 20px;
+  max-width: 1280px;
+  margin: auto;
+  padding: 1em;
+}
+
+img {
+  max-width: 100%;
+}
+
+/* nav stuff */
+.main_nav{
+    display: flex;
+    justify-content: flex-end;
+    list-style-type: none;
+}
+
+.main_nav li{
+    flex-basis: 5em;
+}
+
+.main_nav a{
+    color: black;
+}
+
+/* topo map */
+.media-card{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    justify-content: center;
+    text-align: center;
+}
+
+.media-card-img{
+    width: 70%;
+}
+
+@media screen and (min-width:700px) {
+    .media-card{
+        flex-direction: row;
+    }
+}

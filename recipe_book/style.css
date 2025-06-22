@@ -1,0 +1,388 @@
+/* Import Google Fonts */
+/* Using 'Patrick Hand' as an accessible alternative to 'Amatic SC' for headlines */
+@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap'); /* Using Inter for general text as a modern sans-serif */
+
+
+/* Custom Properties (CSS Variables) */
+:root {
+    --primary-color: #1B98E0; /* A shade of blue */
+    --secondary-color: #59c3c3; /* A teal/cyan shade */
+    --accent-color: #F7B538; /* A warm orange for accents like stars */
+    --text-dark: #333; /* Dark grey for body text */
+    --text-light: #ebebeb; /* Light grey for text on dark backgrounds */
+    --background-light: #f4f4f4; /* Light background for sections */
+    --background-dark: #2c3e50; /* Dark background for footer/header */
+    --border-color: #ccc; /* For input and button borders */
+
+    --primary-font: 'Inter', Arial, Helvetica, sans-serif; /* For body text */
+    --secondary-font: 'Patrick Hand', cursive; /* For headlines and titles */
+}
+
+/* Global Styles */
+*, *::before, *::after {
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--primary-font);
+    line-height: 1.6;
+    color: var(--text-dark);
+    background-color: var(--background-light);
+    display: flex; /* Use flexbox for overall page layout */
+    flex-direction: column; /* Stack header, main, footer vertically */
+    min-height: 100vh; /* Ensure body takes at least full viewport height */
+}
+
+/* Responsive Images */
+img {
+    max-width: 100%; /* Images won't exceed their parent's width */
+    height: auto; /* Maintain aspect ratio */
+    display: block; /* Remove extra space below images */
+}
+
+/* Links */
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--secondary-color);
+}
+
+/* Headings */
+h1, h2, h3 {
+    font-family: var(--secondary-font);
+    color: var(--primary-color);
+    margin-bottom: 0.5em;
+    text-align: center;
+}
+
+h1 {
+    font-size: 2.5em;
+    padding: 0 0.5em; /* Add horizontal padding to prevent text from touching edges on small screens */
+}
+
+h2 {
+    font-size: 2em;
+    margin-top: 1em;
+}
+
+h3 {
+    font-size: 1.5em;
+}
+
+/* Header Styles */
+.site-header {
+    background-color: var(--background-dark);
+    color: var(--text-light);
+    padding: 1em 1em;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    width: 100%;
+}
+
+.header-content {
+    display: flex;
+    flex-direction: row; /* Changed to row for mobile as per wireframe */
+    align-items: center;
+    justify-content: center; /* Center content horizontally */
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 0.5em; /* Small gap between logo and title */
+}
+
+.site-logo {
+    width: 50px; /* Adjusted logo size for mobile wireframe */
+    height: auto;
+    margin-bottom: 0; /* No bottom margin when side-by-side */
+}
+
+.site-title {
+    color: var(--text-light);
+    font-size: 2em; /* Adjusted to match mobile wireframe prominence */
+    margin-bottom: 0;
+    text-align: left; /* Align to left when in a row */
+}
+
+/* Main Content Area */
+.main-content {
+    flex-grow: 1;
+    padding: 1em;
+    max-width: 1200px;
+    margin: 1em auto;
+}
+
+/* Search Section */
+.search-section {
+    background-color: #fff;
+    padding: 1.5em;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    margin-bottom: 2em;
+    text-align: center;
+}
+
+.search-form {
+    display: flex;
+    flex-direction: row; /* Changed to row for mobile as per wireframe */
+    justify-content: center; /* Center input and button */
+    align-items: center;
+    gap: 0; /* Remove gap to make input and button appear as one unit */
+    border: 1px solid var(--border-color); /* Add border to the container */
+    border-radius: 5px; /* Apply border radius to the container */
+    overflow: hidden; /* Ensure inner elements conform to border-radius */
+    max-width: 400px; /* Limit total search form width */
+    margin: 0 auto; /* Center the search form */
+}
+
+#searchInput {
+    flex-grow: 1; /* Allow input to take available space */
+    padding: 0.8em 1em;
+    border: none; /* Remove individual border */
+    border-radius: 0; /* Remove individual border radius */
+    font-size: 1em;
+    outline: none; /* Remove outline on focus */
+}
+
+.search-button {
+    background-color: transparent; /* Transparent background */
+    color: var(--primary-color); /* Color the icon */
+    padding: 0.8em 1em; /* Adjust padding to make it look like part of input */
+    border: none; /* Remove border */
+    border-left: 1px solid var(--border-color); /* Add left border to separate from input */
+    border-radius: 0; /* Remove individual border radius */
+    font-size: 1.2em; /* Size for icon (SVG) */
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    display: flex; /* For centering SVG icon */
+    align-items: center;
+    justify-content: center;
+    width: 50px; /* Fixed width for the button/icon area */
+    height: 100%; /* Match input height */
+}
+
+.search-button:hover {
+    background-color: var(--background-light);
+    color: var(--secondary-color);
+}
+
+/* Recipe Display Section */
+.recipes-section {
+    margin-top: 2em;
+}
+
+.recipe-list {
+    display: flex;
+    flex-direction: column; /* Stack recipe cards vertically on mobile */
+    gap: 1.5em; /* Space between recipe cards */
+    align-items: center; /* Center cards horizontally on mobile */
+}
+
+.recipe-card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    overflow: hidden;
+    max-width: 350px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s ease;
+}
+
+.recipe-card:hover {
+    transform: translateY(-5px);
+}
+
+.recipe-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-bottom: 1px solid var(--background-light);
+}
+
+.recipe-info {
+    padding: 1em;
+    flex-grow: 1;
+}
+
+.recipe-name {
+    margin-top: 0.5em; /* Added margin for visual separation from tags */
+    margin-bottom: 0.2em;
+    text-align: left;
+    color: var(--text-dark);
+    font-size: 1.8em; /* Made larger as per wireframe */
+    line-height: 1.2;
+}
+
+/* New styles for recipe tags to match wireframe */
+.recipe-tags {
+    display: flex; /* Use flexbox for tags */
+    flex-wrap: wrap; /* Allow tags to wrap */
+    gap: 0.5em; /* Space between tags */
+    margin-bottom: 0.8em;
+    font-size: 0.9em; /* Keep original size, individual tags will be styled */
+}
+
+.recipe-tag { /* New class for individual tags */
+    background-color: var(--background-light); /* Light background for tags */
+    color: var(--text-dark);
+    padding: 0.3em 0.7em;
+    border-radius: 4px;
+    font-size: 0.85em; /* Slightly smaller text for tags */
+    text-transform: capitalize; /* Capitalize tag text */
+    white-space: nowrap; /* Prevent tags from breaking */
+    border: 1px solid var(--border-color); /* Add a subtle border */
+}
+
+
+.recipe-meta {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9em;
+    color: #555;
+    margin-bottom: 0.8em;
+    gap: 0.5em;
+}
+
+.recipe-time, .recipe-servings {
+    display: flex;
+    align-items: center;
+    gap: 0.3em;
+}
+
+.rating {
+    display: inline-flex;
+    color: var(--accent-color);
+    font-size: 1.1em;
+    gap: 0.1em;
+}
+
+.icon-star-empty {
+    color: #ccc;
+}
+
+/* Hide recipe description on mobile (already present, confirm it's working) */
+.recipe-description {
+    font-size: 0.95em;
+    color: #444;
+    line-height: 1.5;
+    display: none; /* Hidden by default on small screens */
+    margin-top: 0.8em;
+}
+
+/* Footer Styles */
+.site-footer {
+    background-color: var(--background-dark);
+    color: var(--text-light);
+    padding: 1.5em 1em;
+    text-align: center;
+    margin-top: auto;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 1em;
+    margin-bottom: 1em;
+}
+
+.social-icon {
+    width: 32px;
+    height: 32px;
+    transition: transform 0.2s ease;
+}
+
+.social-icon:hover {
+    transform: scale(1.1);
+}
+
+.attribution-text {
+    font-size: 0.6em;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 0.5em;
+}
+
+.attribution-text .flaticon-link {
+    color: inherit;
+    text-decoration: underline;
+}
+
+.copyright {
+    font-size: 0.8em;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* Media Queries for Responsiveness */
+
+/* Medium screens (e.g., tablets) - around 600px breakpoint */
+@media screen and (min-width: 600px) {
+    /* Header remains row on larger screens */
+    .header-content {
+        justify-content: flex-start; /* Align to start on larger screens */
+        gap: 1em;
+    }
+
+    .site-logo {
+        width: 80px; /* Slightly larger logo */
+    }
+
+    .site-title {
+        font-size: 2.8em; /* Larger title */
+    }
+
+    .search-form {
+        max-width: 600px; /* Wider search form on desktop */
+    }
+
+    .recipe-list {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1.5em;
+    }
+
+    .recipe-card {
+        max-width: 300px;
+        flex: 1 1 calc(50% - 1.5em);
+    }
+
+    .recipe-description {
+        display: block;
+    }
+}
+
+/* Large screens (e.g., desktops) - around 960px breakpoint */
+@media screen and (min-width: 960px) {
+    h1 {
+        font-size: 3em;
+    }
+
+    h2 {
+        font-size: 2.5em;
+    }
+
+    .site-title {
+        font-size: 3em;
+    }
+
+    .recipe-list {
+        gap: 2em;
+    }
+
+    .recipe-card {
+        max-width: 320px;
+        flex: 1 1 calc(33.333% - 2em);
+    }
+}
