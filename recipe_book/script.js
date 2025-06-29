@@ -4,14 +4,34 @@ const recipesData = [
     {
         id: 'Apple Crisp',
         name: 'Apple Crisp',
-        image: 'apple_crisp.jpg',
+        image: 'images/apple_crisp.jpg',
         tags: ['apple', 'yummy'],
         time: '1 hour',
         servings: '4 servings',
         rating: 4,
         description: 'This apple crisp recipe is a simple yet delicious fall dessert that\'s great served warm with vanilla ice cream.'
+    },
+    {
+        id: 'Jello Cheesecake',
+        name: 'Jello Cheesecake',
+        image: 'images/jello_cheesecake.jpg',
+        tags: ['frozen', 'yummy'],
+        time: '12 hours',
+        servings: '5 servings',
+        rating: 5,
+        description: 'The Best desert in the whole world. prepped for 30 mins and frozen over night. Best shared with friends.'
+    },
+    {
+        id: 'Coffee Cake',
+        name: 'Coffee Cake',
+        image: 'images/coffeecake.jpg',
+        tags: ['breakfast', 'baked'],
+        time: '1 hour',
+        servings: '6 servings',
+        rating: 4,
+        description: '***Does not contain Coffee*** great breakfast item, filled with gooey brown sugar goodness.'
     }
-];
+]; 
 
 // Get the div where recipes will be displayed
 const recipeListElement = document.getElementById('recipeList');
@@ -44,6 +64,11 @@ function getStarRatingHTML(rating) {
 
     // Include aria-label for screen reader accessibility
     return `<span class="rating" role="img" aria-label="Rating: ${rating} out of ${maxRating} stars">${starsHtml}</span>`;
+}
+
+function getRandomListEntry(list) {
+    const randomIndex = Math.floor(Math.random() * list.length);
+    return list[randomIndex];
 }
 
 /**
@@ -86,17 +111,21 @@ function displayRecipes(recipes) {
  */
 function filterRecipes(searchTerm) {
     const lowerCaseSearchTerm = searchTerm.toLowerCase();
-    return recipesData.filter(recipe =>
+
+    const filtered = recipesData.filter(recipe =>
         recipe.name.toLowerCase().includes(lowerCaseSearchTerm) ||
         recipe.description.toLowerCase().includes(lowerCaseSearchTerm) ||
         recipe.tags.some(tag => tag.toLowerCase().includes(lowerCaseSearchTerm))
     );
+
+    // Sort alphabetically by name
+    return filtered.sort((a, b) => a.name.localeCompare(b.name));
 }
 
 // Event Listeners
 document.addEventListener('DOMContentLoaded', () => {
-    // Display all recipes when the page loads initially
-    displayRecipes(recipesData);
+    const randomRecipe = getRandomListEntry(recipesData);
+    displayRecipes([randomRecipe]); // Display a single random recipe
 });
 
 searchForm.addEventListener('submit', (event) => {

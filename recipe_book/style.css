@@ -326,45 +326,7 @@ h3 {
 
 /* Media Queries for Responsiveness */
 
-/* Medium screens (e.g., tablets) - around 600px breakpoint */
-@media screen and (min-width: 600px) {
-    /* Header remains row on larger screens */
-    .header-content {
-        justify-content: flex-start; /* Align to start on larger screens */
-        gap: 1em;
-    }
-
-    .site-logo {
-        width: 80px; /* Slightly larger logo */
-    }
-
-    .site-title {
-        font-size: 2.8em; /* Larger title */
-    }
-
-    .search-form {
-        max-width: 600px; /* Wider search form on desktop */
-    }
-
-    .recipe-list {
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 1.5em;
-    }
-
-    .recipe-card {
-        max-width: 300px;
-        flex: 1 1 calc(50% - 1.5em);
-    }
-
-    .recipe-description {
-        display: block;
-    }
-}
-
-/* Large screens (e.g., desktops) - around 960px breakpoint */
-@media screen and (min-width: 960px) {
+@media screen and (min-width: 500px) {
     h1 {
         font-size: 3em;
     }
@@ -382,7 +344,6 @@ h3 {
     }
 
     .recipe-card {
-        max-width: 320px;
-        flex: 1 1 calc(33.333% - 2em);
+        width: 600px;
     }
 }
