@@ -44,7 +44,7 @@ body {
   background: linear-gradient(#66090959, #440606);
   border-radius: 12px;
   padding: 16px;
-  width: 300px;
+  width: 250px;
   height: 150px;
   box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
 }
@@ -97,6 +97,31 @@ body {
   margin: 0;
 }
 
+.stats-inline {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.stat-block {
+  flex: 1 1 45%;
+}
+
+.mini-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.mini-list li {
+  padding: 4px 2px;
+  font-size: 14px;
+}
+
 /* Modal Styles */
 .modal {
   position: fixed;
@@ -137,7 +162,8 @@ body {
 
 .view-tells-btn{
   background-color: var(--primary-color);
-  border: none;
+  border-radius: 5px;
+  border: var(--secondary-color);
   color: var(--accent1-color);
   margin: 10px 0px;
 }

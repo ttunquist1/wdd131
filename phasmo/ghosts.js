@@ -105,11 +105,92 @@ const phasmophobiaGhost = [
     },
     {
         name: "Yokai",
-        evidence: [],
-        sanityThreshold: [],
-        speed: [],
+        evidence: [Spirit, Orbs, DOTS],
+        sanityThreshold: ["50%", "80%"],
+        speed: ["1.7 m/s"], //los
+        tells: ["Hearing and detection has shorter distand and less during a hunt(2.5m)"]
+    },
+    {
+        name: "Hantu",
+        evidence: [UV, Orbs, Freezing],
+        sanityThreshold: ["50%"],
+        speed: ["1.4 m/s", "2.7 m/s"], // no los
+        tells: ["Will have visible breath during hunts when breaker is broken/off", "Cannot turn on the breaker", "Faster un colder rooms", "Likes to turn off the breaker"]
+    },
+    {
+        name: "Goryo",
+        evidence: [EMF_5, UV, DOTS],
+        sanityThreshold: ["50%"],
+        speed: ["1.7 m/s"], //los
+        tells: ["DOTS only appear on video camera, and will not appear if player is in room."]
+    },
+    {
+        name: "Myling",
+        evidence: [EMF_5, UV, Writing],
+        sanityThreshold: ["50%"],
+        speed: ["1.7 m/s"], //los
+        tells: ["Footsteps and vocals cannot be heard from more than 12m away during hunt.(standard is 20m)", "Makes sounds on Parabolic mic and sound recorder more often than other ghosts"]
+    },
+    {
+        name: "Onryo",
+        evidence: [Spirit, Orbs, Freezing],
+        sanityThreshold: ["40%", "60%", "100%"],
+        speed: ["1.7 m/s"], //los
+        tells: ["Cannot ignite a fire source", "Will attempt to hunt player at any average sanity after extinguishing every 3rd light"]
+    },
+    {
+        name: "The Twins",
+        evidence: [EMF_5, Spirit, Freezing],
+        sanityThreshold: ["50%"],
+        speed: ["1.53 m/s", "1.87 m/s"], // los
+        tells: ["Can do 2 interactions at the same time(one in normal distance(2.12m and 4.24m on large maps) and one at extended distance(8.48m and 16.97m on large maps))", "Ghosts speed will vary +-10% during hunts(does not change during hunt (beyond LOS change))"]
+    },
+    {
+        name: "Raiju",
+        evidence: [EMF_5, UV, DOTS],
+        sanityThreshold: ["50%", "65%"],
+        speed: ["1.7 m/s", "2.5 m/s"], // los
         tells: []
+    },
+    {
+        name: "Obake",
+        evidence: [EMF_5, UV, Orbs],
+        sanityThreshold: ["50%"],
+        speed: ["1.7 m/s"], //los
+        tells: ["Has a special 6 fingered hand print","Has a 1/4 chance to not leave UV", "Changes model at least one time for a single blink each hunt"]
+    },
+    {
+        name: "The Mimic",
+        evidence: [Spirit, UV, Freezing, Orbs],
+        sanityThreshold: ["12%", "50%", "100%"],
+        speed: ["1.7m m/s"], //los
+        tells: ["Always  shows Ghost Orbs(even if 0 evidence is selected)"]
+    },
+    {
+        name: "Moroi",
+        evidence: [Spirit, Writing, Freezing],
+        sanityThreshold: ["50%"],
+        speed: ["1.5 m/s", "2.25 m/s", "3.71 m/s"],
+        tells: ["Places a curse on the player when heard through Sprit Box, Sound Recorder, and Parabolic Mic(This curse causes sanity to deain twice as fast, even when in lit room(like the van))", "Blinded by Incense longer during hunt(standard is 5s, Moroi is 7s)"]
+    },
+    {
+        name: "Deogen",
+        evidence: [Spirit, Writing, DOTS],
+        sanityThreshold: ["40%"],
+        speed: ["0.4 m/s", "3.0 m/s"],
+        tells: ["CANNOT HIDE FROM THIS GHOST(ALWAYS KNOWS WHERE YOU ARE)", "The Deogen is super fast but slows to a crawl when it gets near you, easy to loop around a table for the duration of hunt so you do not die","Has 1/3 chance to give heavy breathing on spiritbox when within 1m of ghost","Super visible during hunt"]
+    },
+    {
+        name: "Thaye",
+        evidence: [Orbs, Writing, DOTS],
+        sanityThreshold: ["15%", "75%"],
+        speed: ["1.0 m/s", "2.75 m/s"],
+        tells: ["The Ouija board age response increases as the Thaye ages"]
     }
+
+
+    
+    
 ]
 
 

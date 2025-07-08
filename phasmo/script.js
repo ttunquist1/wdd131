@@ -21,7 +21,7 @@ phasmophobiaGhosts.forEach(ghost => {
   <div class="details">
     <div class="stats-inline">
       <div>
-        <p><strong>Sanity Threshold:</strong></p>
+        <p><strong>Sanity:</strong></p>
         <ul class="mini-list">
           ${ghost.sanityThreshold.map(s => `<li>${s}</li>`).join("")}
         </ul>
