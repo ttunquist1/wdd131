@@ -52,3 +52,10 @@ closeBtn.addEventListener("click", () => modal.classList.add("hidden"));
 window.addEventListener("click", e => {
   if (e.target === modal) modal.classList.add("hidden");
 });
+
+// Also add support for touch (mobile)
+window.addEventListener("touchstart", (e) => {
+  if (e.target.id === "modal") {
+    modal.classList.add("hidden");
+  }
+});
