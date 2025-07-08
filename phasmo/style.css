@@ -41,29 +41,40 @@ body {
 }
 
 .ghost-box {
-  background: var(--primary-color);
+  background: linear-gradient(#66090959, #440606);
   border-radius: 12px;
   padding: 16px;
-  width: 300px;
+  width: 400px;
+  height: 150px;
   box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
 }
 
+.ghost-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.ghost-header h2 {
+  margin: 0;
+}
+
 .ghost-box h2 {
-  margin-top: 0;
+  margin: 0;
   font-family: var(--heading-font);
   font-size: 30px;
-  color: #300202;
+  color: var(--accent1-color);
 }
 
 .evidence {
-  margin: 10px 5px;
+  margin: 5px 5px;
 }
 
 .evidence-item {
   display: inline-block;
-  padding: 4px 8px;
+  padding: 4px 4px;
   margin-right: 6px;
-  border-radius: 6px;
   font-size: 14px;
 }
 
@@ -72,6 +83,19 @@ body {
   margin: 5px 0;
 }
 
+.stats-inline {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.stats-inline > div,
+.stats-inline > p {
+  flex: 1 1 45%;
+  margin: 0;
+}
 
 /* Modal Styles */
 .modal {

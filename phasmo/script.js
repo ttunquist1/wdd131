@@ -11,21 +11,36 @@ phasmophobiaGhosts.forEach(ghost => {
   box.className = "ghost-box";
 
   box.innerHTML = `
+  <div class="ghost-header">
     <h2>${ghost.name}</h2>
-    <div class="evidence">
-      ${ghost.evidence.map(e => `<span class="evidence-item">${e}</span>`).join("")}
+    <button class="view-tells-btn">More Info</button>
+  </div>
+  <div class="evidence">
+    ${ghost.evidence.map(e => `<span class="evidence-item">${e}</span>`).join("")}
+  </div>
+  <div class="details">
+    <div class="stats-inline">
+      <div>
+        <p><strong>Sanity Threshold:</strong></p>
+        <ul class="mini-list">
+          ${ghost.sanityThreshold.map(s => `<li>${s}</li>`).join("")}
+        </ul>
+      </div>
+      <div>
+        <p><strong>Speed:</strong></p>
+        <ul class="mini-list">
+          ${ghost.speed.map(s => `<li>${s}</li>`).join("")}
+        </ul>
+      </div>
     </div>
-    <div class="details">
-      <p><strong>Sanity Threshold:</strong> ${ghost.sanityThreshold}</p>
-      <p><strong>Speed:</strong> ${ghost.speed}</p>
-    </div>
-    <button class="view-tells-btn">Tells</button>
-  `;
+  </div>
+`;
+
 
   // Add click event to open modal
   box.querySelector(".view-tells-btn").addEventListener("click", () => {
-    modalTitle.textContent = ghost.name + " - Tells";
-    modalTells.textContent = ghost.tells;
+    modalTitle.textContent = "Tells";
+    modalTells.innerHTML = "<ul>" + ghost.tells.map(t => `<li>${t}</li>`).join("") + "</ul>";
     modal.classList.remove("hidden");
   });
 
