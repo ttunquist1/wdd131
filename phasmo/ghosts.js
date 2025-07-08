@@ -13,7 +13,7 @@ const temp = [
         name: "",
         evidence: [],
         sanityThreshold: [],
-        speed: "",
+        speed: [],
         tells: []
     }
 ]
@@ -58,56 +58,56 @@ const phasmophobiaGhost = [
         name: "Jinn",
         evidence: [EMF_5, UV, Freezing],
         sanityThreshold: ["50%"],
-        speed: "1.7 m/s", // 2.5 m/s LOS
+        speed: ["1.7 m/s", "2.5 m/s"], //LOS
         tells:["When breaker is on, the Jinn will speed up during a hunt if it has LOS on player and further than 3m"]
     },
     {
         name: "Mare",
         evidence: [Spirit, Orbs, Writing],
         sanityThreshold: ["40%", "60%"],
-        speed: "1.7 m/s", //los
+        speed: ["1.7 m/s"], //los
         tells:["Won't hunt until 40% team sanity when light switch in its current room is in the on position(breaker does not need to be on), 60% team sanity if light switch is in off position or if light bulbs are broken"]
     },
     {
         name: "Revenant",
         evidence: [Orbs, Writing, Freezing],
         sanityThreshold: ["50%"],
-        speed: "3.0 m/s", //1.0 m/s when doesnt see you. no LOS
+        speed: ["1.0 m/s","3.0 m/s"], // no LOS
         tells: ["During a hunt, the Revenant will be slow (1.0 m/s) until it detects a player(voice, active equipment, or LOS) where is changes speed to 3.0 m/s and runs to last known location of player where it then slows back down. "]
     },
     {
         name: "Shade",
         evidence: [EMF_5, Writing, Freezing],
         sanityThreshold: ["35%"],
-        speed: "1.7 m/s", //los
+        speed: ["1.7 m/s"], //los
         tells: ["Only ghost that can appear as a shadow during summoning circle, music box, and monkey paw events"]
     },
     {
         name: "Demon",
         evidence: [UV, Writing, Freezing],
         sanityThreshold: ["70%", "100%"],
-        speed: "1.7 m/s", //los
+        speed: ["1.7 m/s"], //los
         tells: ["Hunts sooner after smudge(60s instead of 90s)", "Ghost can hunt 20s after previous hunt or crucifix burn(standard is 25s)"]
     },
     {
         name: "Yurei",
         evidence: [Orbs, Freezing, DOTS],
         sanityThreshold: ["50%"],
-        speed: "1.7 m/s", //los
+        speed: ["1.7 m/s"], //los
         tells: ["Incense will force the ghost into favorite room for duration of effect(90s)"]
     },
     {
         name: "Oni",
         evidence: [EMF_5, Freezing, DOTS],
         sanityThreshold: ["50%"],
-        speed: "1.7 m/s", //los
+        speed: ["1.7 m/s"], //los
         tells: ["Drains 20% sanity during events(standard is 10%)", "Does not give 'ghost mist' event", "Blinks more during events(causes Oni to be more visible"]
     },
     {
         name: "Yokai",
         evidence: [],
         sanityThreshold: [],
-        speed: "",
+        speed: [],
         tells: []
     }
 ]
