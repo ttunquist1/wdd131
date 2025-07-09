@@ -11,14 +11,14 @@
   --paragraph-font: sans-serif;
 
   /* these colors below should be chosen from among your palette colors above */
-  --headline-color-on-white: var(
-    --primary-color
-  ); /* headlines on a white background */
-  --headline-color-on-color: white; /* headlines on a colored background */
-  --paragraph-color-on-white: var(
-    --primary-color
-  ); /* paragraph text on a white background */
-  --paragraph-color-on-color: white; /* paragraph text on a colored background */
+  --headline-color-on-white: var(--primary-color);
+  /* headlines on a white background */
+  --headline-color-on-color: white;
+  /* headlines on a colored background */
+  --paragraph-color-on-white: var(--primary-color);
+  /* paragraph text on a white background */
+  --paragraph-color-on-color: white;
+  /* paragraph text on a colored background */
   --paragraph-background-color: var(--primary-color);
   --nav-link-color: var(--primary-color);
   --nav-background-color: var(--secondary-color);
@@ -32,17 +32,20 @@ body {
   background-color: #111;
   color: #eee;
   padding: 20px;
+  grid-template-rows: 1fr 1fr 1fr;
 }
 
 /* filter */
 #filter-menu {
-  margin-bottom: 20px;
   padding: 10px;
   background-color: #222;
   border-radius: 10px;
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
+  right: 20px;
+  position: fixed;
+  flex-direction: column;
 }
 
 #filter-menu label {
@@ -111,8 +114,8 @@ body {
   flex-wrap: wrap;
 }
 
-.stats-inline > div,
-.stats-inline > p {
+.stats-inline>div,
+.stats-inline>p {
   flex: 1 1 45%;
   margin: 0;
 }
@@ -149,7 +152,7 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0,0,0,0.6);
+  background-color: rgba(0, 0, 0, 0.6);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -180,10 +183,17 @@ body {
   display: none;
 }
 
-.view-tells-btn{
+.view-tells-btn {
   background-color: var(--primary-color);
   border-radius: 5px;
   border: var(--secondary-color);
   color: var(--accent1-color);
   margin: 10px 0px;
+}
+
+@media screen and (max-width:500px) {
+  .ghost-box {
+    width: 180px;
+    height: 210px;
+  }
 }
