@@ -54,6 +54,23 @@ body {
   display: flex;
   align-items: center;
   gap: 5px;
+  user-select: none;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.tristate {
+  border-radius: 4px;
+  padding: 2px 4px;
+  margin: 2px 0;
+}
+
+.tristate.required {
+  background-color: #a3e635; /* green */
+}
+
+.tristate.excluded {
+  background-color: #f87171; /* red */
 }
 
 /* ghost box */

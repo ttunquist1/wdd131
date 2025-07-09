@@ -54,16 +54,55 @@ window.addEventListener("click", e => {
 // Filtering logic
 const checkboxes = document.querySelectorAll('#filter-menu input[type="checkbox"]');
 
-checkboxes.forEach(cb => cb.addEventListener('change', filterGhosts));
+const evidenceStates = {}; // Tracks tri-state for each evidence
+
+checkboxes.forEach(cb => {
+  const value = cb.value;
+  evidenceStates[value] = "ignored"; // default state
+
+  // Use label to show state styling
+  const label = cb.closest('label');
+  label.classList.add('tristate');
+
+  cb.addEventListener('click', (e) => {
+    e.preventDefault(); // Prevent default checkbox behavior
+
+    // Cycle state
+    if (evidenceStates[value] === "ignored") {
+      evidenceStates[value] = "required";
+      label.classList.remove("excluded");
+      label.classList.add("required");
+      cb.checked = true;
+    } else if (evidenceStates[value] === "required") {
+      evidenceStates[value] = "excluded";
+      label.classList.remove("required");
+      label.classList.add("excluded");
+      cb.checked = false;
+    } else {
+      evidenceStates[value] = "ignored";
+      label.classList.remove("required", "excluded");
+      cb.checked = false;
+    }
+
+    filterGhosts();
+  });
+});
 
 function filterGhosts() {
-  const selected = Array.from(checkboxes)
-    .filter(cb => cb.checked)
-    .map(cb => cb.value);
+  const required = [];
+  const excluded = [];
+
+  for (const [evidence, state] of Object.entries(evidenceStates)) {
+    if (state === "required") required.push(evidence);
+    if (state === "excluded") excluded.push(evidence);
+  }
 
   ghostBoxes.forEach(({ ghost, element }) => {
-    const hasAllEvidence = selected.every(e => ghost.evidence.includes(e));
-    const show = selected.length === 0 || hasAllEvidence;
+    const hasRequired = required.every(ev => ghost.evidence.includes(ev));
+    const hasExcluded = excluded.some(ev => ghost.evidence.includes(ev));
+
+    const show = (required.length === 0 || hasRequired) && !hasExcluded;
     element.style.display = show ? "block" : "none";
   });
 }
+
