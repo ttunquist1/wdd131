@@ -16,7 +16,10 @@ phasmophobiaGhosts.forEach(ghost => {
   box.innerHTML = `
     <div class="top-row" style="display: flex; justify-content: space-between; align-items: center;">
       <h2>${ghost.name}</h2>
-      <button class="view-tells-btn">More Info</button>
+      <div style="display: flex; flex-direction: column; gap: 4px; align-items: flex-end;">
+        <button class="view-tells-btn">More Info</button>
+        <button class="toggle-hide-btn">Hide</button>
+      </div>
     </div>
     <div class="evidence">
       ${ghost.evidence.map(e => `<span class="evidence-item">${e}</span>`).join("")}
@@ -35,39 +38,47 @@ phasmophobiaGhosts.forEach(ghost => {
     </div>
   `;
 
+  // Modal behavior
   box.querySelector(".view-tells-btn").addEventListener("click", () => {
     modalTitle.textContent = ghost.name + " - Tells";
     modalTells.innerHTML = "<ul>" + ghost.tells.map(t => `<li>${t}</li>`).join("") + "</ul>";
     modal.classList.remove("hidden");
   });
 
+  // Manual hide/show toggle
+  let isDimmed = false;
+  const toggleBtn = box.querySelector(".toggle-hide-btn");
+  toggleBtn.addEventListener("click", () => {
+    isDimmed = !isDimmed;
+    toggleBtn.textContent = isDimmed ? "Show" : "Hide";
+    box.classList.toggle("dimmed", isDimmed);
+  });
+
   container.appendChild(box);
   ghostBoxes.push({ ghost, element: box });
+
 });
 
-// Modal behavior
+// Modal close
 closeBtn.addEventListener("click", () => modal.classList.add("hidden"));
 window.addEventListener("click", e => {
   if (e.target === modal) modal.classList.add("hidden");
 });
 
-// Filtering logic
+// Tri-state filtering
 const checkboxes = document.querySelectorAll('#filter-menu input[type="checkbox"]');
-
-const evidenceStates = {}; // Tracks tri-state for each evidence
+const evidenceStates = {};
 
 checkboxes.forEach(cb => {
   const value = cb.value;
-  evidenceStates[value] = "ignored"; // default state
+  evidenceStates[value] = "ignored";
 
-  // Use label to show state styling
   const label = cb.closest('label');
   label.classList.add('tristate');
 
   cb.addEventListener('click', (e) => {
-    e.preventDefault(); // Prevent default checkbox behavior
+    e.preventDefault();
 
-    // Cycle state
     if (evidenceStates[value] === "ignored") {
       evidenceStates[value] = "required";
       label.classList.remove("excluded");
@@ -88,6 +99,7 @@ checkboxes.forEach(cb => {
   });
 });
 
+// Main filter logic
 function filterGhosts() {
   const required = [];
   const excluded = [];
@@ -97,7 +109,7 @@ function filterGhosts() {
     if (state === "excluded") excluded.push(evidence);
   }
 
-  ghostBoxes.forEach(({ ghost, element }) => {
+  ghostBoxes.forEach(({ ghost, element, isManuallyHidden }) => {
     const hasRequired = required.every(ev => ghost.evidence.includes(ev));
     const hasExcluded = excluded.some(ev => ghost.evidence.includes(ev));
 
@@ -105,4 +117,3 @@ function filterGhosts() {
     element.style.display = show ? "block" : "none";
   });
 }
-

@@ -46,6 +46,7 @@ body {
   right: 20px;
   position: fixed;
   flex-direction: column;
+  z-index: 100;
 }
 
 #filter-menu label {
@@ -87,6 +88,10 @@ body {
   width: 250px;
   height: 150px;
   box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+}
+
+.dimmed {
+  opacity: 0.3;
 }
 
 .ghost-header {
