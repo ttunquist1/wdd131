@@ -83,29 +83,7 @@ window.addEventListener("click", e => {
   if (e.target === modal) modal.classList.add("hidden");
 });
 
-const filterMenu = document.getElementById("filter-menu");
-const filterContainer = document.getElementById("filter-container");
-const collapseBtn = document.getElementById("collapse-btn");
-const advancedFilters = document.getElementById("advanced-filters");
 
-const stickyOffset = filterContainer.offsetTop;
-
-window.addEventListener("scroll", () => {
-  if (window.scrollY > stickyOffset) {
-    filterMenu.classList.add("sticky");
-    collapseBtn.classList.remove("hidden");
-  } else {
-    filterMenu.classList.remove("sticky");
-    collapseBtn.classList.add("hidden");
-    advancedFilters.classList.remove("collapsed");
-    collapseBtn.textContent = "⯆ Collapse";
-  }
-});
-
-collapseBtn.addEventListener("click", () => {
-  const isCollapsed = advancedFilters.classList.toggle("collapsed");
-  collapseBtn.textContent = isCollapsed ? "⯈ Expand" : "⯆ Collapse";
-});
 
 // Tri-state filtering
 const checkboxes = document.querySelectorAll('#filter-menu input[type="checkbox"]');
@@ -211,3 +189,4 @@ document.querySelectorAll('input[name="sanity"]').forEach(rb => {
 document.querySelectorAll('input[name="speed"]').forEach(rb => {
   rb.addEventListener("change", filterGhosts);
 });
+

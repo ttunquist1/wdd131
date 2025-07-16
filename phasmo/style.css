@@ -26,6 +26,28 @@
   --nav-hover-background-color: var(--primary-color);
 }
 
+#main-header {
+  display: flex;
+  justify-content:left;
+  background-color: #222;
+  color: #eee;
+  padding: 10px 20px;
+  position: relative;
+  z-index: 1002;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+#site-logo {
+  height: 50px;
+  width: auto;
+}
+
+#main-header h1 {
+  font-family: var(--heading-font);
+  font-size: 28px;
+  margin: 5px;
+}
 
 body {
   font-family: sans-serif;
@@ -33,6 +55,7 @@ body {
   color: #eee;
   padding: 20px;
   grid-template-rows: 1fr 1fr 1fr;
+  padding-bottom: 10px;
 }
 
 /* filter */
@@ -47,27 +70,28 @@ body {
   border-radius: 10px;
   background-color: #111;
   transition: box-shadow 0.2s ease, transform 0.2s ease;
-}
-
-#filter-menu.sticky {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  margin: 0 auto;
-  z-index: 999;
-  border-radius: 0;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
-}
-
-#filter-menu {
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
   gap: 1rem;
   padding: 1rem;
   background: #111;
   color: white;
   border-radius: 10px;
+}
+
+#filter-menu label {
+  display: inline-flex;        /* Keep checkbox and text side by side */
+  align-items: center;
+  white-space: nowrap;         /* Prevents text from wrapping separately */
+  gap: 6px;
+  padding: 6px 10px;
+  background-color: #333;
+  border: 1px solid #444;
+  border-radius: 6px;
+  font-size: 14px;
+  color: #fff;
+  cursor: pointer;
 }
 
 #filter-menu fieldset {
@@ -87,31 +111,15 @@ body {
   margin: 2px 0;
 }
 
-.tristate.required {
+#filter-menu label.tristate.required{
   background-color: #a3e635; /* green */
 }
 
-.tristate.excluded {
+
+#filter-menu label.tristate.excluded  {
   background-color: #f87171; /* red */
 }
 
-#collapse-btn {
-  background-color: var(--primary-color);
-  color: var(--accent1-color);
-  border: none;
-  border-radius: 5px;
-  padding: 5px 10px;
-  cursor: pointer;
-  margin-bottom: 10px;
-}
-
-#collapse-btn.hidden {
-  display: none;
-}
-
-#advanced-filters.collapsed {
-  display: none;
-}
 
 /* ghost box */
 #ghost-container {
