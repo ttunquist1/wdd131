@@ -95,7 +95,23 @@ body {
   background-color: #f87171; /* red */
 }
 
+#collapse-btn {
+  background-color: var(--primary-color);
+  color: var(--accent1-color);
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
 
+#collapse-btn.hidden {
+  display: none;
+}
+
+#advanced-filters.collapsed {
+  display: none;
+}
 
 /* ghost box */
 #ghost-container {
