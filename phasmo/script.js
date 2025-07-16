@@ -128,33 +128,62 @@ function filterGhosts() {
   }
 
   const sanityValue = document.querySelector('input[name="sanity"]:checked').value;
+  const speedValue = document.querySelector('input[name="speed"]:checked').value;
 
   ghostBoxes.forEach(({ ghost, element }) => {
     const hasRequired = required.every(ev => ghost.evidence.includes(ev));
     const hasExcluded = excluded.some(ev => ghost.evidence.includes(ev));
 
+    // Sanity check
     let passesSanity = true;
     if (sanityValue !== "any") {
-      const sanityNumbers = ghost.sanityThreshold
-        .map(s => parseInt(s.replace(/\D/g, ''))) // Extract numbers like "50" from "50%"
+      const thresholds = ghost.sanityThreshold
+        .map(s => parseFloat(s.replace(/[^0-9]/g, '')))
         .filter(n => !isNaN(n));
 
-      if (sanityValue === "under50") {
-        passesSanity = sanityNumbers.some(n => n < 50);
-      } else if (sanityValue === "50") {
-        passesSanity = sanityNumbers.some(n => n === 50);
-      } else if (sanityValue === "over50") {
-        passesSanity = sanityNumbers.some(n => n > 50);
+      if (thresholds.length === 0) {
+        passesSanity = false;
+      } else {
+        if (sanityValue === "under") {
+          passesSanity = thresholds.some(n => n < 50);
+        } else if (sanityValue === "exact") {
+          passesSanity = thresholds.some(n => n === 50);
+        } else if (sanityValue === "over") {
+          passesSanity = thresholds.some(n => n > 50);
+        }
       }
     }
 
-    const show = (required.length === 0 || hasRequired) && !hasExcluded && passesSanity;
+    // Speed check
+    let passesSpeed = true;
+    if (speedValue !== "any") {
+      const speeds = ghost.speed
+        .map(s => parseFloat(s.replace(/[^0-9.]/g, '')))
+        .filter(n => !isNaN(n));
+
+      if (speeds.length === 0) {
+        passesSpeed = false;
+      } else {
+        if (speedValue === "under") {
+          passesSpeed = speeds.some(n => n < 1.7);
+        } else if (speedValue === "exact") {
+          passesSpeed = speeds.some(n => n === 1.7);
+        } else if (speedValue === "over") {
+          passesSpeed = speeds.some(n => n > 1.7);
+        }
+      }
+    }
+
+    const show = (required.length === 0 || hasRequired) && !hasExcluded && passesSanity && passesSpeed;
     element.style.display = show ? "block" : "none";
   });
 }
 
 
-// Sanity filter radio buttons
 document.querySelectorAll('input[name="sanity"]').forEach(rb => {
+  rb.addEventListener("change", filterGhosts);
+});
+
+document.querySelectorAll('input[name="speed"]').forEach(rb => {
   rb.addEventListener("change", filterGhosts);
 });
