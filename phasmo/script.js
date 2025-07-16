@@ -40,8 +40,26 @@ phasmophobiaGhosts.forEach(ghost => {
 
   // Modal behavior
   box.querySelector(".view-tells-btn").addEventListener("click", () => {
-    modalTitle.textContent = ghost.name + " - Tells";
-    modalTells.innerHTML = "<ul>" + ghost.tells.map(t => `<li>${t}</li>`).join("") + "</ul>";
+    modalTitle.textContent = ghost.name;
+    const modalBody = document.getElementById("modal-body");
+    modalBody.innerHTML = ""; // Clear previous content
+
+    // Helper function to add a section if it exists
+    const addSection = (title, items) => {
+      if (Array.isArray(items) && items.length > 0) {
+        const section = document.createElement("div");
+        section.innerHTML = `
+        <h4>${title}</h4>
+        <ul>${items.map(item => `<li>${item}</li>`).join("")}</ul>
+      `;
+        modalBody.appendChild(section);
+      }
+    };
+
+    addSection("Tells", ghost.tells);
+    addSection("Behavior", ghost.behavior);
+    addSection("Abilities", ghost.abilities);
+
     modal.classList.remove("hidden");
   });
 
@@ -109,11 +127,34 @@ function filterGhosts() {
     if (state === "excluded") excluded.push(evidence);
   }
 
-  ghostBoxes.forEach(({ ghost, element, isManuallyHidden }) => {
+  const sanityValue = document.querySelector('input[name="sanity"]:checked').value;
+
+  ghostBoxes.forEach(({ ghost, element }) => {
     const hasRequired = required.every(ev => ghost.evidence.includes(ev));
     const hasExcluded = excluded.some(ev => ghost.evidence.includes(ev));
 
-    const show = (required.length === 0 || hasRequired) && !hasExcluded;
+    let passesSanity = true;
+    if (sanityValue !== "any") {
+      const sanityNumbers = ghost.sanityThreshold
+        .map(s => parseInt(s.replace(/\D/g, ''))) // Extract numbers like "50" from "50%"
+        .filter(n => !isNaN(n));
+
+      if (sanityValue === "under50") {
+        passesSanity = sanityNumbers.some(n => n < 50);
+      } else if (sanityValue === "50") {
+        passesSanity = sanityNumbers.some(n => n === 50);
+      } else if (sanityValue === "over50") {
+        passesSanity = sanityNumbers.some(n => n > 50);
+      }
+    }
+
+    const show = (required.length === 0 || hasRequired) && !hasExcluded && passesSanity;
     element.style.display = show ? "block" : "none";
   });
 }
+
+
+// Sanity filter radio buttons
+document.querySelectorAll('input[name="sanity"]').forEach(rb => {
+  rb.addEventListener("change", filterGhosts);
+});

@@ -74,6 +74,27 @@ body {
   background-color: #f87171; /* red */
 }
 
+#sanity-filter {
+  margin-top: 10px;
+  padding: 10px;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+#sanity-filter label {
+  background: #222;
+  border: 1px solid #555;
+  padding: 4px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  user-select: none;
+}
+
+#sanity-filter input[type="radio"] {
+  margin-right: 4px;
+}
+
 /* ghost box */
 #ghost-container {
   display: flex;
@@ -163,8 +184,8 @@ body {
 }
 
 .mini-list li {
-  padding: 4px 2px;
-  font-size: 14px;
+  padding: 1px 1px;
+  font-size: 12px;
 }
 
 /* Modal Styles */

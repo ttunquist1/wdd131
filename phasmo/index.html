@@ -23,6 +23,12 @@
         <label><input type="checkbox" value="Orbs"> Ghost Orb</label>
         <label><input type="checkbox" value="Spirit Box"> Spirit Box</label>
     </div>
+    <div id="sanity-filter">
+        <label><input type="radio" name="sanity" value="any" checked> Any</label>
+        <label><input type="radio" name="sanity" value="under50"> Under 50%</label>
+        <label><input type="radio" name="sanity" value="50"> Exactly 50%</label>
+        <label><input type="radio" name="sanity" value="over50"> Over 50%</label>
+    </div>
 
     <div id="ghost-container"></div>
 
@@ -31,7 +37,9 @@
         <div class="modal-content">
             <span class="close-btn">&times;</span>
             <h3 id="modal-title"></h3>
-            <p id="modal-tells"></p>
+            <div id="modal-body">
+                <!-- Sections will be injected here -->
+            </div>
         </div>
     </div>
 </body>
