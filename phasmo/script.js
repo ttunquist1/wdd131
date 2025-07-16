@@ -83,6 +83,19 @@ window.addEventListener("click", e => {
   if (e.target === modal) modal.classList.add("hidden");
 });
 
+const filterMenu = document.getElementById("filter-menu");
+const filterContainer = document.getElementById("filter-container");
+
+const stickyOffset = filterContainer.offsetTop;
+
+window.addEventListener("scroll", () => {
+  if (window.scrollY > stickyOffset) {
+    filterMenu.classList.add("sticky");
+  } else {
+    filterMenu.classList.remove("sticky");
+  }
+});
+
 // Tri-state filtering
 const checkboxes = document.querySelectorAll('#filter-menu input[type="checkbox"]');
 const evidenceStates = {};
