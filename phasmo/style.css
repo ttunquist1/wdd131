@@ -32,8 +32,6 @@
   background-color: #222;
   color: #eee;
   padding: 10px 20px;
-  position: relative;
-  z-index: 1002;
   border-radius: 10px;
   margin-bottom: 10px;
 }
@@ -55,27 +53,21 @@ body {
   color: #eee;
   padding: 20px;
   grid-template-rows: 1fr 1fr 1fr;
-  padding-bottom: 10px;
 }
 
 /* filter */
 #filter-container {
-  position: relative;
-  z-index: 100;
-  margin-bottom: 15px;
+  min-height: 100px; /* match actual filter height */
 }
 
 #filter-menu {
   padding: 1rem;
   border-radius: 10px;
-  background-color: #111;
   transition: box-shadow 0.2s ease, transform 0.2s ease;
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
   gap: 1rem;
   padding: 1rem;
-  background: #111;
   color: white;
   border-radius: 10px;
 }
@@ -252,12 +244,24 @@ body {
   display: none;
 }
 
+.toggle-hide-btn{
+  background-color: var(--primary-color);
+  border: none;
+  border-radius: 10px;
+  color:white;
+}
+
 .view-tells-btn {
   background-color: var(--primary-color);
   border-radius: 5px;
   border: var(--secondary-color);
   color: var(--accent1-color);
   margin: 10px 0px;
+}
+
+legend{
+  font-family: 'Jolly lodger';
+  font-size: 25px;
 }
 
 @media screen and (max-width:500px) {
