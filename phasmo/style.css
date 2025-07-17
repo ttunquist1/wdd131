@@ -34,6 +34,7 @@ header{
 }
 header img{
   margin-right: 15px;
+
 }
 
 body {
@@ -45,14 +46,34 @@ body {
 }
 
 /* filter */
+#filter-container {
+  min-height: 100px; /* match actual filter height */
+}
+
 #filter-menu {
+  padding: 1rem;
+  border-radius: 10px;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
   display: flex;
   flex-direction: column;
   gap: 1rem;
   padding: 1rem;
-  background: #111;
   color: white;
   border-radius: 10px;
+}
+
+#filter-menu label {
+  display: inline-flex;        /* Keep checkbox and text side by side */
+  align-items: center;
+  white-space: nowrap;         /* Prevents text from wrapping separately */
+  gap: 6px;
+  padding: 6px 10px;
+  background-color: #333;
+  border: 1px solid #444;
+  border-radius: 6px;
+  font-size: 14px;
+  color: #fff;
+  cursor: pointer;
 }
 
 #filter-menu fieldset {
@@ -72,14 +93,14 @@ body {
   margin: 2px 0;
 }
 
-.tristate.required {
+#filter-menu label.tristate.required{
   background-color: #a3e635; /* green */
 }
 
-.tristate.excluded {
+
+#filter-menu label.tristate.excluded  {
   background-color: #f87171; /* red */
 }
-
 
 
 /* ghost box */
@@ -213,12 +234,24 @@ body {
   display: none;
 }
 
+.toggle-hide-btn{
+  background-color: var(--primary-color);
+  border: none;
+  border-radius: 10px;
+  color:white;
+}
+
 .view-tells-btn {
   background-color: var(--primary-color);
   border-radius: 5px;
   border: var(--secondary-color);
   color: var(--accent1-color);
   margin: 10px 0px;
+}
+
+legend{
+  font-family: 'Jolly lodger';
+  font-size: 25px;
 }
 
 @media screen and (max-width:500px) {
