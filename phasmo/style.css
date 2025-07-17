@@ -26,6 +26,15 @@
   --nav-hover-background-color: var(--primary-color);
 }
 
+header{
+  display: flex;
+  align-items: center;
+  font-family: 'Jolly Lodger';
+  font-size: 20px;
+}
+header img{
+  margin-right: 15px;
+}
 
 body {
   font-family: sans-serif;
