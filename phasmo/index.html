@@ -4,63 +4,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PhasmoAssistant</title>
-    <meta name="description" content="Welcome to PhasmoAssistant.">
+    <title>Phasmophobia Cheat sheet</title>
+    <meta name="description"
+        content="An Unofficial Phasmophobia cheat sheet for assisting the player in finding the Ghost.">
     <meta name="author" content="Tommy Tunquist">
     <script type="module" src="script.js" defer></script>
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" type="image/x-icon" href="phasmo_logo.webp">
 </head>
 
 <body>
-    <header id="main-header">
-        <img src="phasmo_logo.webp" alt="Logo for PhasmoAssistant" id="site-logo" width="50px">
-        <h1>Phasmophobia Cheat Sheet</h1>
-    </header>
 
+    <div id="filter-menu">
+        <fieldset>
+            <legend>Evidence</legend>
+            <label><input type="checkbox" value="EMF 5"> EMF Level 5</label>
+            <label><input type="checkbox" value="UV"> Ultraviolet</label>
+            <label><input type="checkbox" value="Writing"> Ghost Writing</label>
+            <label><input type="checkbox" value="Freezing"> Freezing Temps</label>
+            <label><input type="checkbox" value="D.O.T.S"> D.O.T.S Projector</label>
+            <label><input type="checkbox" value="Orbs"> Ghost Orb</label>
+            <label><input type="checkbox" value="Spirit Box"> Spirit Box</label>
+        </fieldset>
 
-    <div id="ghost-container">
-        <!-- Modal view to hide tells until wanted -->
-        <div id="modal" class="modal hidden">
-            <div class="modal-content">
-                <span class="close-btn">&times;</span>
-                <h3 id="modal-title"></h3>
-                <div id="modal-body">
-                    <!-- Sections will be injected here -->
-                </div>
-            </div>
-        </div>
+        <fieldset id="sanity-filter">
+            <legend>Sanity Threshold</legend>
+            <label><input type="radio" name="sanity" value="any" checked> Any</label>
+            <label><input type="radio" name="sanity" value="under"> Under 50%</label>
+            <label><input type="radio" name="sanity" value="exact"> Exactly 50%</label>
+            <label><input type="radio" name="sanity" value="over"> Over 50%</label>
+        </fieldset>
+
+        <fieldset id="speed-filter">
+            <legend>Speed</legend>
+            <label><input type="radio" name="speed" value="any" checked> Any</label>
+            <label><input type="radio" name="speed" value="under"> Under 1.7 m/s</label>
+            <label><input type="radio" name="speed" value="exact"> Exactly 1.7 m/s</label>
+            <label><input type="radio" name="speed" value="over"> Over 1.7 m/s</label>
+        </fieldset>
     </div>
 
-    <div id="filter-container">
-        <div id="filter-menu">
+    <div id="ghost-container"></div>
 
-            <fieldset>
-                <legend>Evidence</legend>
-                <label><input type="checkbox" value="EMF 5"> EMF Level 5</label>
-                <label><input type="checkbox" value="UV"> Ultraviolet</label>
-                <label><input type="checkbox" value="Writing"> Ghost Writing</label>
-                <label><input type="checkbox" value="Freezing"> Freezing Temps</label>
-                <label><input type="checkbox" value="D.O.T.S"> D.O.T.S Projector</label>
-                <label><input type="checkbox" value="Orbs"> Ghost Orb</label>
-                <label><input type="checkbox" value="Spirit Box"> Spirit Box</label>
-            </fieldset>
-
-            <fieldset id="sanity-filter">
-                <legend>Sanity Threshold</legend>
-                <label><input type="radio" name="sanity" value="any" checked> Any</label>
-                <label><input type="radio" name="sanity" value="under"> Under 50%</label>
-                <label><input type="radio" name="sanity" value="exact"> Exactly 50%</label>
-                <label><input type="radio" name="sanity" value="over"> Over 50%</label>
-            </fieldset>
-
-            <fieldset id="speed-filter">
-                <legend>Speed</legend>
-                <label><input type="radio" name="speed" value="any" checked> Any</label>
-                <label><input type="radio" name="speed" value="under"> Under 1.7 m/s</label>
-                <label><input type="radio" name="speed" value="exact"> Exactly 1.7 m/s</label>
-                <label><input type="radio" name="speed" value="over"> Over 1.7 m/s</label>
-            </fieldset>
+    <!-- Modal view to hide tells until wanted -->
+    <div id="modal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h3 id="modal-title"></h3>
+            <div id="modal-body">
+                <!-- Sections will be injected here -->
+            </div>
         </div>
     </div>
 </body>

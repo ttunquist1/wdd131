@@ -83,8 +83,6 @@ window.addEventListener("click", e => {
   if (e.target === modal) modal.classList.add("hidden");
 });
 
-
-
 // Tri-state filtering
 const checkboxes = document.querySelectorAll('#filter-menu input[type="checkbox"]');
 const evidenceStates = {};
@@ -189,4 +187,3 @@ document.querySelectorAll('input[name="sanity"]').forEach(rb => {
 document.querySelectorAll('input[name="speed"]').forEach(rb => {
   rb.addEventListener("change", filterGhosts);
 });
-
