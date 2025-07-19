@@ -122,6 +122,23 @@ function filterGhosts() {
   const required = [];
   const excluded = [];
 
+  const selectedEvidences = Array.from(allEvidenceButtons)
+    .filter(btn => btn.classList.contains("required"))
+    .map(btn => btn.textContent.trim());
+
+  // Special case: evidence limit is 0 and "Orbs" is selected
+  if (evidenceLimit === 0) {
+    document.querySelectorAll(".ghost-box").forEach(box => {
+      const name = box.querySelector("h2").textContent;
+      if (selectedEvidences.includes("Orbs") && name === "Mimic") {
+        box.classList.remove("dimmed");
+      } else {
+        box.classList.add("dimmed");
+      }
+    });
+    return;
+  }
+
   for (const [evidence, state] of Object.entries(evidenceStates)) {
     if (state === "required") required.push(evidence);
     if (state === "excluded") excluded.push(evidence);
@@ -179,6 +196,89 @@ function filterGhosts() {
   });
 }
 
+const evidenceLimitSelect = document.getElementById("evidence-limit");
+let evidenceLimit = parseInt(evidenceLimitSelect.value);
+const allEvidenceButtons = document.querySelectorAll(".tristate");
+
+evidenceLimitSelect.addEventListener("change", () => {
+  evidenceLimit = parseInt(evidenceLimitSelect.value);
+  enforceEvidenceLimit();
+});
+
+function getSelectedEvidenceCount() {
+  return Array.from(allEvidenceButtons).filter(btn => {
+    return btn.classList.contains("required") && btn.textContent.trim() !== "Orbs";
+  }).length;
+}
+
+function enforceEvidenceLimit() {
+  const selectedCount = getSelectedEvidenceCount();
+
+  allEvidenceButtons.forEach(btn => {
+    const evidenceName = btn.textContent.trim();
+    const isRequired = btn.classList.contains("required");
+
+    if (evidenceLimit === 0) {
+      // Only allow "Orbs", disable all others
+      if (evidenceName === "Orbs") {
+        btn.disabled = false;
+        btn.classList.remove("disabled");
+        btn.style.pointerEvents = "auto";
+        btn.style.opacity = "1";
+      } else {
+        btn.disabled = true;
+        btn.classList.remove("required", "excluded");
+        btn.setAttribute("data-state", "none");
+        btn.classList.add("disabled");
+        btn.style.pointerEvents = "none";
+        btn.style.opacity = "0.3";
+      }
+    } else {
+      // Enable all (with limit logic), including Orbs
+      btn.disabled = false;
+      btn.classList.remove("disabled");
+
+      if (evidenceName === "Orbs") {
+        btn.style.pointerEvents = "auto";
+        btn.style.opacity = "1";
+        return;
+      }
+
+      if (!isRequired && selectedCount >= evidenceLimit) {
+        btn.style.pointerEvents = "none";
+        btn.style.opacity = "0.4";
+      } else {
+        btn.style.pointerEvents = "auto";
+        btn.style.opacity = "1";
+      }
+    }
+  });
+}
+
+
+
+// Run once on load
+enforceEvidenceLimit();
+
+// Hook into your existing tri-state toggle logic
+document.querySelectorAll(".tristate").forEach(btn => {
+  btn.addEventListener("click", () => {
+    const currentState = btn.getAttribute("data-state") || "none";
+    let nextState;
+    if (currentState === "none") nextState = "excluded";
+    else if (currentState === "excluded") nextState = "required";
+    else nextState = "none";
+
+    btn.setAttribute("data-state", nextState);
+    btn.classList.remove("required", "excluded");
+    if (nextState !== "none") btn.classList.add(nextState);
+
+    enforceEvidenceLimit();
+    filterGhosts(); // Keep your filter logic updated
+  });
+});
+
+
 
 document.querySelectorAll('input[name="sanity"]').forEach(rb => {
   rb.addEventListener("change", filterGhosts);
@@ -187,3 +287,22 @@ document.querySelectorAll('input[name="sanity"]').forEach(rb => {
 document.querySelectorAll('input[name="speed"]').forEach(rb => {
   rb.addEventListener("change", filterGhosts);
 });
+
+document.getElementById("random-ghost-btn").addEventListener("click", () => {
+  // Select only visible (non-dimmed) ghost boxes
+  const visibleGhosts = Array.from(document.querySelectorAll(".ghost-box"))
+    .filter(ghost => !ghost.classList.contains("dimmed"));
+
+  if (visibleGhosts.length === 0) {
+    alert("No ghosts match the current filters!");
+    return;
+  }
+
+  const randomIndex = Math.floor(Math.random() * visibleGhosts.length);
+  const selectedGhost = visibleGhosts[randomIndex];
+
+  // Optional: highlight
+  visibleGhosts.forEach(g => g.classList.remove("highlighted-ghost"));
+  selectedGhost.classList.add("highlighted-ghost");
+});
+

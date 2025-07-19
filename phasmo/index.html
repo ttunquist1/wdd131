@@ -10,11 +10,22 @@
     <meta name="author" content="Tommy Tunquist">
     <script type="module" src="script.js" defer></script>
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="phasmo_logo.webp">
 </head>
 
 <body>
-
+    <header>
+        <img src="phasmo_logo.webp" alt="PhasmoAssistant Logo" width="70px">
+        <h1>PhasmoAssistant</h1>
+    </header>
     <div id="filter-menu">
+        <label for="evidence-limit">Evidence Limit:</label>
+        <select id="evidence-limit">
+            <option value="3" selected>3 Evidences</option>
+            <option value="2">2 Evidences</option>
+            <option value="1">1 Evidence</option>
+            <option value="0">0 Evidences</option>
+        </select>
         <fieldset>
             <legend>Evidence</legend>
             <label><input type="checkbox" value="EMF 5"> EMF Level 5</label>
@@ -42,6 +53,8 @@
             <label><input type="radio" name="speed" value="over"> Over 1.7 m/s</label>
         </fieldset>
     </div>
+
+    <button id="random-ghost-btn">🎲 Random Ghost</button>
 
     <div id="ghost-container"></div>
 

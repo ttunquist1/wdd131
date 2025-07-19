@@ -25,7 +25,27 @@
   --nav-hover-link-color: white;
   --nav-hover-background-color: var(--primary-color);
 }
+header{
+  display: flex;
+  align-items: center;
+}
 
+header h1{
+  font-family: var(--heading-font);
+  font-size: 35px;
+}
+
+header img{
+  margin-right: 20px;
+}
+
+#evidence-limit{
+  background-color: var(--primary-color);
+  color: white;
+  border-radius: 10px;
+  border-color: var(--primary-color);
+  width: 100px;
+}
 
 body {
   font-family: sans-serif;
@@ -71,7 +91,32 @@ body {
   background-color: #f87171; /* red */
 }
 
+.tristate.disabled {
+  opacity: 0.4;
+  pointer-events: none;
+}
 
+#random-ghost-btn {
+  background-color: var(--primary-color);
+  color: var(--accent1-color);
+  border: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-left: auto;
+  margin-right: 10px;
+  height: fit-content;
+}
+
+#random-ghost-btn:hover {
+  background-color: var(--secondary-color);
+}
+
+.highlighted-ghost {
+  border: 3px solid yellow;
+  box-shadow: 0 0 10px yellow;
+}
 
 /* ghost box */
 #ghost-container {
