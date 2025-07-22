@@ -181,7 +181,7 @@ const phasmophobiaGhost = [
     },
     {
         name: "Raiju",
-        evidence: [EMF_5, UV, DOTS],
+        evidence: [EMF_5, Orbs, DOTS],
         sanityThreshold: ["50%", "65%"],
         speed: ["1.7 m/s", "2.5 m/s"], // los
         tells: [],
